@@ -32,3 +32,28 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+# NextJS Project
+
+## Project Name - Work Manager
+
+## Technologies
+1. Backend - NextJS
+2. Frontend - NextJS
+3. Database - MongoDB
+
+## Pre-requisite
+
+1. ReactJS
+2. Web Development
+3. TailwindCSS
+4. MongoDB
+5. RESTAPI Knowledge
+
+## Things I have learned during this project
+1. Routing
+2. How layout.js and page.js works
+3. Loading a page using loading.js
+4. Error page loading using error.js
+5. Routing using route.js
