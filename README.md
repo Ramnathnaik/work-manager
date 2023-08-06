@@ -57,3 +57,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 3. Loading a page using loading.js
 4. Error page loading using error.js
 5. Routing using route.js
+6. Creating APIs
+7. Dynamic routes
