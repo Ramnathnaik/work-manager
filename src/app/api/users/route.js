@@ -1,9 +1,9 @@
 import { connectDB } from "@/helper/db";
-import { NextResponse } from "next/server"
+import { NextResponse } from "next/server";
 
 connectDB();
 
-export function GET(request) {
+export async function GET(request) {
     let users = [
         {name: 'Ramanath K P', phone: '1234', address: '#8, Bangalore'},
         {name: 'Ashwin K A', phone: '2323', address: '#7, Bangalore'},
