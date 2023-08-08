@@ -7,19 +7,8 @@ export async function connectDB() {
         const {connection} = await mongoose.connect(process.env.MONGO_DB_URL, {
             dbName: 'work_manager'
         });
-        // console.log(connection);
 
-        const user = User({
-            name: 'Test Name',
-            password: 'test@1234',
-            email: 'test@email.com',
-            about: 'Test About',
-            profileURL: 'https://profile.url'
-        });
-    
-        await user.save();
-    
-        console.log('user saved');
+        console.log('db connected..');
     }
     catch (error) {
         console.log('connection failed');

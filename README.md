@@ -60,3 +60,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 6. Creating APIs
 7. Dynamic routes
 8. MongoDB Altas (Cloud) connection
+9. Creating Schema and Model using mongoose
