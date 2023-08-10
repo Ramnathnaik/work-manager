@@ -1,4 +1,5 @@
 import { connectDB } from "@/helper/db";
+import { sendResponse } from "@/helper/response";
 import { User } from "@/models/user";
 import { NextResponse } from "next/server";
 
@@ -12,10 +13,7 @@ export async function GET(request) {
         users = await User.find();
     } catch (error) {
         console.log(error);
-        return NextResponse.json({
-            message: 'Failed to fetch user',
-            status: false
-        });
+        return sendResponse('Failed to fetch user');
     }
     return NextResponse.json(users, {status: 200, statusText: 'all users'});
 }
@@ -37,12 +35,6 @@ export async function POST(request) {
         return NextResponse.json(createdUser, {status: 201, statusText: 'user got created'});
     } catch (error) {
         console.log(error);
-        return NextResponse.json({
-            message: 'User creation failed', 
-            status: false
-        }, {
-            status: 401,
-            statusText: 'failed'
-        })
+        return sendResponse('User creation failed');
     }
 }

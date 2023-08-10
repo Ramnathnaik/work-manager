@@ -62,3 +62,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 8. MongoDB Altas (Cloud) connection
 9. Creating Schema and Model using mongoose
 10. CRUD Operation on MongDB using Mongoose
+11. Task API, Task Model & Schema and Optimizing error response

@@ -1,3 +1,4 @@
+import { sendResponse } from "@/helper/response";
 import { User } from "@/models/user";
 import { NextResponse } from "next/server";
 
@@ -9,10 +10,7 @@ export async function DELETE(request, {params}) {
         await User.deleteOne({_id: userId});
     } catch (error) {
         console.log(error);
-        return NextResponse.json({
-            message: 'error in deleting user',
-            status: false
-        })
+        return sendResponse('error in deleting user');
     }
 
     return NextResponse.json({message: `${userId} got deleted`});
@@ -28,10 +26,7 @@ export async function GET(request, {params}) {
        user = await User.findById(userId);
     } catch (error) {
         console.log(error);
-        return NextResponse.json({
-            message: 'User not found',
-            status: false
-        });
+        return sendResponse('User not found');
     }
 
     return NextResponse.json(user, {status: 200, statusText: 'User found'});
@@ -59,9 +54,6 @@ export async function PUT(request, {params}) {
         });
     } catch (error) {
         console.log(error);
-        return NextResponse.json({
-            message: 'Failed to update user',
-            status: false
-        });
+        return sendResponse('Failed to update user');
     }
 }
