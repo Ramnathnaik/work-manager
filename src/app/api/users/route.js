@@ -1,9 +1,6 @@
-import { connectDB } from "@/helper/db";
 import { sendResponse } from "@/helper/response";
 import { User } from "@/models/user";
 import { NextResponse } from "next/server";
-
-connectDB();
 
 /* Get all users */
 export async function GET(request) {

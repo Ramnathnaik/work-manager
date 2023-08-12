@@ -1,8 +1,11 @@
+import { connectDB } from "@/helper/db";
 import { sendResponse } from "@/helper/response";
 import { Task } from "@/models/task";
 import { User } from "@/models/user";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
+
+connectDB();
 
 /* Get all tasks */
 export async function GET() {
