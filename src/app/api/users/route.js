@@ -1,7 +1,10 @@
 import { sendResponse } from "@/helper/response";
 import { User } from "@/models/user";
 import { NextResponse } from "next/server";
-import bycrpt from bycrpt;
+import bcrypt from 'bcrypt';
+import { connectDB } from "@/helper/db";
+
+connectDB();
 
 /* Get all users */
 export async function GET(request) {
@@ -29,7 +32,7 @@ export async function POST(request) {
     });
 
     try {
-        user.password = bycrpt.hashSync(user.password, parseInt(process.env.BCRYPT_SALT));
+        user.password = bcrypt.hashSync(user.password, parseInt(process.env.BCRYPT_SALT));
         const createdUser = await user.save();
         return NextResponse.json(createdUser, {status: 201, statusText: 'user got created'});
     } catch (error) {
