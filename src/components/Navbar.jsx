@@ -18,8 +18,8 @@ const Navbar = () => {
         </div>
         <div>
             <ul className='flex space-x-5 font-semibold'>
-                <li><a href="#!">Login</a></li>
-                <li><a href="#!">Signup</a></li>
+                <Link href={'/login'}>Login</Link>
+                <Link href={'/signup'}>Signup</Link>
             </ul>
         </div>
     </nav>
