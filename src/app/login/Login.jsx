@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
+import { login } from "../services/authServices";
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [loginForm, setLoginForm] = useState({
@@ -9,10 +12,37 @@ const Login = () => {
     password: ''
   });
 
+  const route = useRouter();
+
   const handleLogin = async () => {
     if (!loginForm.email) return;
     if (!loginForm.password) return;
 
+    const toastyNotify = toast.loading("Logging in the user", {
+      position: "top-center",
+    });
+
+    try {
+      const loginInfo = await login(loginForm);
+      clearForm();
+      toast.update(toastyNotify, {
+        render: "User signed up successfully!",
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
+
+      /* Route to different page */
+      route.push('/profile/user');
+    } catch (error) {
+      console.log(error);
+      toast.update(toastyNotify, {
+        render: error.response.data.message,
+        type: "error",
+        isLoading: false,
+        autoClose: 3000,
+      });
+    }
 
     clearForm();
   }
