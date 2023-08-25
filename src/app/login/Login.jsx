@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import React, { useState } from "react";
@@ -8,13 +8,14 @@ import { toast } from "react-toastify";
 
 const Login = () => {
   const [loginForm, setLoginForm] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
 
   const route = useRouter();
 
-  const handleLogin = async () => {
+  const handleLogin = async (event) => {
+    event.preventDefault();
     if (!loginForm.email) return;
     if (!loginForm.password) return;
 
@@ -33,7 +34,7 @@ const Login = () => {
       });
 
       /* Route to different page */
-      route.push('/profile/user');
+      route.push("/profile/user");
     } catch (error) {
       console.log(error);
       toast.update(toastyNotify, {
@@ -45,33 +46,32 @@ const Login = () => {
     }
 
     clearForm();
-  }
+  };
 
   const clearForm = () => {
     setLoginForm({
-      email: '',
-      password: ''
-    })
-  }
+      email: "",
+      password: "",
+    });
+  };
 
   return (
     <div className="grid grid-cols-12">
-      <style jsx> {
-        `
-        .seperator {
-          height: 25%;
-          width: 2px;
-          background: #374151;
-          top: 180px;
-          bottom: 0;
-          position: absolute;
-          left: 50%;
-        }
-        `
-      }
+      <style jsx>
+        {`
+          .seperator {
+            height: 25%;
+            width: 2px;
+            background: #374151;
+            top: 180px;
+            bottom: 0;
+            position: absolute;
+            left: 50%;
+          }
+        `}
       </style>
       <div className="col-span-4 col-start-2 flex justify-center">
-        <Image src={'/login.svg'} width={250} height={250} alt="login-img" />
+        <Image src={"/login.svg"} width={250} height={250} alt="login-img" />
       </div>
       <div className="seperator"></div>
       <div className="col-span-4 col-start-7 p-5 mt-3 ms-5">
@@ -93,7 +93,7 @@ const Login = () => {
               onChange={(event) => {
                 setLoginForm({
                   ...loginForm,
-                  email: event.target.value
+                  email: event.target.value,
                 });
               }}
               value={loginForm.email}
@@ -115,8 +115,8 @@ const Login = () => {
               onChange={(event) => {
                 setLoginForm({
                   ...loginForm,
-                  password: event.target.value
-                })
+                  password: event.target.value,
+                });
               }}
               value={loginForm.password}
             />
@@ -128,7 +128,11 @@ const Login = () => {
             >
               Login
             </button>
-            <button type="reset" onClick={clearForm} className="bg-gradient-to-r from-red-700 to-red-800 w-40 px-3 py-2 rounded-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-700 duration-300 font-semibold">
+            <button
+              type="reset"
+              onClick={clearForm}
+              className="bg-gradient-to-r from-red-700 to-red-800 w-40 px-3 py-2 rounded-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-700 duration-300 font-semibold"
+            >
               Clear
             </button>
           </div>

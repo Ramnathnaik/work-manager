@@ -33,12 +33,12 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-
 # NextJS Project
 
 ## Project Name - Work Manager
 
 ## Technologies
+
 1. Backend - NextJS
 2. Frontend - NextJS
 3. Database - MongoDB
@@ -52,6 +52,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 5. RESTAPI Knowledge
 
 ## Things I have learned during this project
+
 1. Routing
 2. How layout.js and page.js works
 3. Loading a page using loading.js
@@ -64,3 +65,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 10. CRUD Operation on MongDB using Mongoose
 11. Task API, Task Model & Schema and Optimizing error response
 12. Server & Client Components
+13. Middleware usage
