@@ -16,9 +16,6 @@ export async function middleware(request) {
       return NextResponse.redirect(new URL("/profile/user", request.url));
   } else {
     //accessing secured route
-    console.log(
-      `authToken: ${authToken} \n request path: ${request.nextUrl.pathname}`
-    );
     if (!authToken)
       return NextResponse.redirect(new URL("/login", request.url));
     else {
