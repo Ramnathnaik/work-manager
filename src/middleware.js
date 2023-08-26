@@ -4,7 +4,11 @@ import { NextResponse } from "next/server";
 export async function middleware(request) {
   const authToken = await request.cookies.get("authToken")?.value;
 
-  if (request.nextUrl.pathname === "/api/login") return;
+  if (
+    request.nextUrl.pathname === "/api/login" ||
+    request.nextUrl.pathname === "/api/users"
+  )
+    return;
 
   const loggedInUserPathNotAccessible =
     request.nextUrl.pathname === "/login" ||

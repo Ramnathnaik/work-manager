@@ -3,6 +3,7 @@ import { sendResponse } from "@/helper/response";
 import { User } from "@/models/user";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { NextResponse } from "next/server";
 
 connectDB();
 
@@ -27,7 +28,11 @@ export async function POST(request) {
       process.env.JWT_KEY
     );
 
-    const response = sendResponse("Login success", true, 200, "login success");
+    const response = NextResponse.json({
+      message: "login success",
+      status: true,
+      user,
+    });
     response.cookies.set("authToken", token, {
       expiresIn: "1d",
       httpOnly: true,

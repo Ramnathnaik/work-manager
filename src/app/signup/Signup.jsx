@@ -4,6 +4,7 @@ import { httpAxios } from "@/helper/httpHelper";
 import React, { useState } from "react";
 import { SignupUser } from "../services/userServices";
 import Image from "next/image";
+import { toast } from "react-toastify";
 
 const Signup = () => {
   const [signupForm, setSignupForm] = useState({
@@ -35,7 +36,10 @@ const Signup = () => {
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     const isValidPassword = passwordRegex.test(signupForm.password);
 
-    if (!isValidPassword) return;
+    if (!isValidPassword) {
+      toast.error("Password should be complex!");
+      return;
+    }
 
     const toastyNotify = toast.loading("Signing up the user", {
       position: "top-center",
@@ -75,22 +79,21 @@ const Signup = () => {
 
   return (
     <div className="grid grid-cols-12">
-      <style jsx> {
-        `
-        .seperator {
-          height: 55%;
-          width: 2px;
-          background: #374151;
-          top: 150px;
-          bottom: 0;
-          position: absolute;
-          left: 50%;
-        }
-        `
-      }
+      <style jsx>
+        {`
+          .seperator {
+            height: 55%;
+            width: 2px;
+            background: #374151;
+            top: 150px;
+            bottom: 0;
+            position: absolute;
+            left: 50%;
+          }
+        `}
       </style>
       <div className="col-span-4 col-start-2 flex justify-center">
-        <Image src={'/signup.svg'} height={300} width={300} alt="signup-img"/>
+        <Image src={"/signup.svg"} height={300} width={300} alt="signup-img" />
       </div>
       <div className="seperator"></div>
       <div className="col-span-4 col-start-7 p-5 mt-3 ms-5">

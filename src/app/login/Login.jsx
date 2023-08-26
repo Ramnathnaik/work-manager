@@ -1,16 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { login } from "../services/authServices";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import UserContext from "@/context/userContext";
 
 const Login = () => {
   const [loginForm, setLoginForm] = useState({
     email: "",
     password: "",
   });
+
+  const context = useContext(UserContext);
 
   const route = useRouter();
 
@@ -32,6 +35,8 @@ const Login = () => {
         isLoading: false,
         autoClose: 3000,
       });
+
+      context.setUser(loginInfo.user);
 
       /* Route to different page */
       route.push("/profile/user");

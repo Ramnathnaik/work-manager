@@ -12,8 +12,7 @@ const UserProvider = ({ children }) => {
     async function load() {
       try {
         const tempUser = await currentUser();
-        console.log(tempUser);
-        setUser({ ...tempUser });
+        tempUser?.name ? setUser({ ...tempUser }) : setUser(undefined);
       } catch (error) {
         console.log(error);
         toast.error("Error in loading current user");

@@ -9,3 +9,7 @@ export const login = async (loginData) => {
 export const currentUser = async () => {
   return await httpAxios.get("/api/current").then((response) => response.data);
 };
+
+export const logout = async () => {
+  return await httpAxios.post("/api/logout").then((response) => response.data);
+};
