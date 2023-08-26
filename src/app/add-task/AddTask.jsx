@@ -11,7 +11,7 @@ const AddTask = () => {
     title: "",
     content: "",
     status: "none",
-    userId: "64d26d739612e53e1c9f1159",
+    userId: "",
   });
 
   /* Handle Add Task */
@@ -22,18 +22,36 @@ const AddTask = () => {
     if (task.status === "none") return;
 
     const toastyNotify = toast.loading("Please wait...", {
-      position: 'top-center'
+      position: "top-center",
     });
 
     try {
       const createdTask = await addTask(task);
-      console.log(createdTask);
-      toast.update(toastyNotify, { render: "Task created successfully!", type: "success", isLoading: false, autoClose: 3000 });
+      toast.update(toastyNotify, {
+        render: "Task created successfully!",
+        type: "success",
+        isLoading: false,
+        autoClose: 3000,
+      });
     } catch (error) {
       console.log(error);
-      toast.update(toastyNotify, { render: "Task creation failed!", type: "error", isLoading: false, autoClose: 3000 });
+      toast.update(toastyNotify, {
+        render: "Task creation failed!",
+        type: "error",
+        isLoading: false,
+        autoClose: 3000,
+      });
     }
+    clear();
+  };
 
+  const clear = () => {
+    setTask({
+      title: "",
+      content: "",
+      status: "none",
+      userId: "",
+    });
   };
 
   return (
@@ -114,7 +132,10 @@ const AddTask = () => {
             <button className="bg-gradient-to-r from-sky-500 to-indigo-500 w-40 px-3 py-2 rounded-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 font-semibold">
               Add Task
             </button>
-            <button className="bg-gradient-to-r from-red-700 to-red-800 w-40 px-3 py-2 rounded-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-700 duration-300 font-semibold">
+            <button
+              onClick={clear}
+              className="bg-gradient-to-r from-red-700 to-red-800 w-40 px-3 py-2 rounded-lg transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-red-700 duration-300 font-semibold"
+            >
               Clear
             </button>
           </div>

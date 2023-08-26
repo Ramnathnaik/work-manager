@@ -4,6 +4,7 @@ import { Task } from "@/models/task";
 import { User } from "@/models/user";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
+import jwt from "jsonwebtoken";
 
 connectDB();
 
@@ -27,6 +28,8 @@ export async function GET() {
 /* Add a new Task */
 export async function POST(request) {
   const { title, content, userId } = await request.json();
+  const authToken = await request.cookies.get("authToken")?.value;
+  const data = jwt.verify(authToken, process.env.JWT_KEY);
 
   try {
     const user = User.findById(userId);
@@ -35,7 +38,7 @@ export async function POST(request) {
       const task = new Task({
         title,
         content,
-        userId,
+        userId: data._id,
       });
       const createdTask = await task.save();
 
