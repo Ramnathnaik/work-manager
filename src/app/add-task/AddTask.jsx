@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { addTask } from "../services/taskServices";
 import { ToastContainer, toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const AddTask = () => {
   // document.title = metadata.title;
@@ -13,6 +14,8 @@ const AddTask = () => {
     status: "none",
     userId: "",
   });
+
+  const router = useRouter();
 
   /* Handle Add Task */
   const handleAddTask = async (event) => {
@@ -27,14 +30,17 @@ const AddTask = () => {
 
     try {
       const createdTask = await addTask(task);
+      clear();
       toast.update(toastyNotify, {
         render: "Task created successfully!",
         type: "success",
         isLoading: false,
         autoClose: 3000,
       });
+      router.push("/show-tasks");
     } catch (error) {
       console.log(error);
+      clear();
       toast.update(toastyNotify, {
         render: "Task creation failed!",
         type: "error",
@@ -42,7 +48,6 @@ const AddTask = () => {
         autoClose: 3000,
       });
     }
-    clear();
   };
 
   const clear = () => {

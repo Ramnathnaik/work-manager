@@ -12,7 +12,6 @@ export async function GET(request) {
     if (authToken) {
       const data = jwt.verify(authToken, process.env.JWT_KEY);
       currentUser = await User.findById(data._id).select("-password");
-      console.log(currentUser);
     }
   } catch (error) {
     console.log(error);

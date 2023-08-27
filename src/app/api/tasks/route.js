@@ -27,7 +27,7 @@ export async function GET() {
 
 /* Add a new Task */
 export async function POST(request) {
-  const { title, content, userId } = await request.json();
+  const { title, content, userId, status } = await request.json();
   const authToken = await request.cookies.get("authToken")?.value;
   const data = jwt.verify(authToken, process.env.JWT_KEY);
 
@@ -39,6 +39,7 @@ export async function POST(request) {
         title,
         content,
         userId: data._id,
+        status,
       });
       const createdTask = await task.save();
 

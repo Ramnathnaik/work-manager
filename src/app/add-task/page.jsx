@@ -8,7 +8,9 @@ export const metadata = {
 
 const AddTaskPage = () => {
   return (
-    <Suspense fallback={<AddTaskLoading/>}><AddTask/></Suspense>
+    <Suspense fallback={<AddTaskLoading />}>
+      <AddTask />
+    </Suspense>
   );
 };
 

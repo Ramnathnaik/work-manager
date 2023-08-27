@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { Suspense } from "react";
+import ShowTasks from "./ShowTasks";
+import ShowTasksLoading from "./loading";
 
 export const metadata = {
-    title: 'Show Tasks : Task Manager'
-}
+  title: "Show Tasks : Task Manager",
+};
 
-const ShowTasks = () => {
+const ShowTasksPage = () => {
   return (
-    <div>ShowTasks</div>
-  )
-}
+    <Suspense fallback={<ShowTasksLoading />}>
+      <ShowTasks />
+    </Suspense>
+  );
+};
 
-export default ShowTasks
+export default ShowTasksPage;
