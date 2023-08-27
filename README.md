@@ -67,3 +67,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 12. Server & Client Components
 13. Middleware usage
 14. CreateContext & UseContext
+15. App deployed on Vercel
+
+Here is the app link: https://work-manager-eight.vercel.app/
