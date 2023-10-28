@@ -1,7 +1,11 @@
-export default function Profile() {
-    return (
-        <div>
-            <h1>This is profile route</h1>
-        </div>
-    );
-}
+import User from "./user/User";
+
+export const metadata = {
+  title: "Home : Task Manager",
+};
+
+const UserPage = () => {
+  return <User />;
+};
+
+export default UserPage;
